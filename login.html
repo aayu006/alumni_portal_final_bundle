@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Alumni Portal - Login</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="login-bg" aria-hidden="true">
+    <div class="circle c1"></div>
+    <div class="circle c2"></div>
+    <div class="circle c3"></div>
+  </div>
+
+  <div class="site-wrap">
+    <nav>
+      <div class="logo">🎓 Alumni Portal</div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="admin.html">Admin</a></li>
+      </ul>
+      <div>
+        <button id="darkToggle" class="toggle">🌙</button>
+        <span id="menuBtn" class="menu-icon">☰</span>
+      </div>
+    </nav>
+
+    <main class="main-content center" style="display:flex;align-items:center;justify-content:center;padding:60px 12px;">
+      <div class="form-box" id="formBox" role="form" aria-label="Login or Sign up form">
+        <h2 id="formTitle">Login</h2>
+
+        <div id="formError" class="form-error" style="display:none" role="alert" aria-hidden="true"></div>
+
+        <div class="input-group">
+          <input type="email" placeholder="Email" id="emailField" required aria-label="Email" />
+        </div>
+        <div class="field-error" id="emailError" style="display:none"></div>
+
+        <div class="input-group">
+          <input type="password" placeholder="Password" id="passwordField" required aria-label="Password" />
+          <button type="button" id="toggleEye" class="eye-btn" aria-label="Show password">👁️</button>
+        </div>
+        <div class="field-error" id="passwordError" style="display:none"></div>
+
+        <div id="confirmWrapper"></div>
+        <div class="field-error" id="confirmError" style="display:none"></div>
+
+        <div class="pwd-strength" style="margin-top:8px">
+          <div style="font-size:0.9rem;margin-bottom:6px;color:#556">Password strength: <span id="pwdMsg">—</span></div>
+          <div style="height:8px;background:#eee;border-radius:6px;overflow:hidden"><div id="pwdBar" style="height:100%;width:0%;background:#4b6cf7"></div></div>
+        </div>
+
+        <button id="formBtn" class="primary-btn" style="margin-top:12px;">Login</button>
+
+        <p class="small" style="margin-top:10px">Or sign in as admin on <a href="admin.html">Admin Dashboard</a></p>
+        <p class="small toggle-link" id="toggleForm" style="cursor:pointer;color:#4b6cf7;margin-top:10px">Don't have an account? Sign Up</p>
+      </div>
+    </main>
+
+    <footer>
+      <div class="center small-muted">© 2025 Alumni Portal. All rights reserved.</div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

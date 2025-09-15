@@ -1,0 +1,132 @@
+/* style.css - complete, replace existing with this file */
+
+/* Reset & base */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  font-family: Inter, "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: #f6f8fb;
+  color: #152036;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background .3s ease, color .3s ease;
+}
+a { color: inherit; text-decoration: none; }
+
+/* Site wrap & layout */
+.site-wrap { min-height: 100vh; display: flex; flex-direction: column; }
+.main-content { flex: 1; }
+
+/* NAV */
+nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 24px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.92), rgba(255,255,255,0.7));
+  backdrop-filter: blur(6px);
+  box-shadow: 0 6px 22px rgba(15,18,40,0.05);
+  position: sticky; top: 0; z-index: 50;
+}
+.logo { font-weight: 700; color: #4b6cf7; font-size: 20px; }
+nav ul { list-style: none; display:flex; gap:18px; align-items:center; }
+nav a { text-decoration: none; font-weight: 600; color: #283147; transition: color .15s ease; }
+nav a:hover { color: #4b6cf7; }
+nav a.active { color: #4b6cf7; }
+.menu-icon { display: none; cursor: pointer; font-size: 22px; }
+.toggle { background: transparent; border: none; cursor:pointer; font-size:18px; padding:6px; }
+
+/* HERO */
+.header-title { font-size: 2.2rem; margin-bottom: 8px; color: #0b1430; }
+.header-sub { color: #505f7a; margin-bottom: 18px; }
+
+/* Sections & cards */
+.section { padding: 50px 6%; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+.card {
+  background: rgba(255,255,255,0.98);
+  padding: 18px; border-radius: 12px;
+  box-shadow: 0 14px 35px rgba(20,24,48,0.06);
+  transition: transform .22s ease, box-shadow .22s ease;
+}
+.card:hover { transform: translateY(-6px); box-shadow: 0 22px 52px rgba(20,24,48,0.08); }
+
+body.dark {
+  background: #0b1020; color: #e6eaf6;
+}
+body.dark nav { background: rgba(10,12,24,0.9); }
+body.dark .card { background: #0f1224; box-shadow: none; color: #eaf0ff; }
+
+/* Login background */
+.login-bg { position: fixed; inset: 0; z-index: -1; overflow: hidden; background: linear-gradient(135deg,#1f2a8a,#7b3ef2); }
+.login-bg .circle { position:absolute; border-radius:50%; filter: blur(60px); opacity: .45; animation: float 14s ease-in-out infinite; }
+.login-bg .c1{ width:420px; height:420px; background:rgba(255,255,255,0.06); left:-80px; top:-60px; }
+.login-bg .c2{ width:300px; height:300px; background:rgba(255,255,255,0.04); right:-60px; top:40px; animation-duration:16s; }
+.login-bg .c3{ width:520px; height:520px; background:rgba(255,255,255,0.03); left:10%; bottom:-120px; animation-duration:18s; }
+@keyframes float { 0% { transform:translateY(0) scale(1) } 50%{ transform:translateY(-30px) scale(1.03) } 100%{ transform:translateY(0) scale(1)} }
+
+/* Form box */
+.form-box {
+  width: 360px; background: #fff; border-radius: 14px; padding: 26px;
+  box-shadow: 0 18px 40px rgba(12,18,60,0.12); margin: 24px auto;
+}
+body.dark .form-box { background: #121226; color: #eaf0ff; box-shadow: 0 12px 30px rgba(0,0,0,0.45); }
+.form-box h2 { color: #1b2340; margin-bottom: 12px; }
+
+/* Input groups */
+.input-group { position: relative; margin-bottom: 8px; }
+.input-group input, .contact-form input, .contact-form textarea {
+  width: 100%; padding: 10px 12px; padding-right: 44px; margin-top: 8px;
+  border-radius: 8px; border: 1px solid #e6e9f2; font-size: 0.95rem; background: #fff;
+}
+.input-group input:focus, .contact-form input:focus, .contact-form textarea:focus {
+  outline: none; box-shadow: 0 8px 24px rgba(75,108,247,0.12); border-color: #6b7df7;
+}
+body.dark .input-group input, body.dark .contact-form input, body.dark .contact-form textarea {
+  background: #0b0d18; border: 1px solid #222436; color: #eee;
+}
+
+.eye-btn {
+  position: absolute; right: 8px; top: 50%; transform: translateY(-50%);
+  background: transparent; border: none; cursor: pointer; font-size: 18px; padding: 6px; border-radius: 8px; opacity: .95;
+}
+.eye-btn:hover { transform: translateY(-50%) scale(1.03); }
+
+/* Strength */
+.pwd-strength { margin-top: 8px; }
+#pwdBar { height: 8px; width: 0%; border-radius: 6px; background: #4b6cf7; transition: width .25s ease; }
+
+/* Buttons */
+.primary-btn {
+  width: 100%; background: linear-gradient(90deg,#5366f7,#7b3ef2); color: #fff; border: none; padding: 10px;
+  border-radius: 8px; margin-top: 8px; cursor: pointer; font-weight: 700;
+}
+.primary-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(75,108,247,0.14); }
+
+/* Contact form */
+.contact-hero { background: linear-gradient(180deg, rgba(102,118,234,0.06), rgba(118,75,162,0.04)); }
+.contact-form { width:100%; }
+.contact-form textarea { resize: vertical; min-height: 120px; }
+
+/* Errors */
+.field-error { color: #b32121; font-size: 0.9rem; margin-top: 6px; display: none; }
+.form-error { background: #ffecec; color: #b32121; padding: 8px 10px; border-radius: 8px; margin-bottom: 10px; display: none; }
+
+/* Small */
+.small-muted { color: #6b7280; font-size: 0.95rem; }
+
+/* Footer */
+footer { background: #0f1330; color: #fff; padding: 18px 20px; text-align: center; }
+
+/* Contact grid */
+.contact-grid { grid-template-columns: 1fr 480px; align-items: start; }
+@media (max-width: 980px) {
+  .contact-grid { grid-template-columns: 1fr; }
+  .form-box { width: 92%; }
+  .menu-icon { display: inline-block; }
+  nav ul { display: none; }
+  nav ul.show { display:flex; position:absolute; right:14px; top:64px; flex-direction:column; background: rgba(255,255,255,0.98); padding:12px; border-radius:8px; box-shadow:0 10px 30px rgba(10,10,30,0.08); }
+}
+
+/* Helpers */
+.field-label { display:block; margin-top:8px; color:#384658; font-weight:600; font-size:0.95rem; }
+a:focus, button:focus, input:focus, textarea:focus { outline: 3px solid rgba(75,108,247,0.12); outline-offset: 2px; border-radius:6px; }
+@media (max-width: 520px) { .form-box { padding: 18px; width: 92%; } .logo { font-size: 18px; } }

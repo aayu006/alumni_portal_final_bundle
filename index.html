@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Alumni Portal - Home</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="site-wrap">
+    <nav>
+      <div class="logo">🎓 Alumni Portal</div>
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="admin.html">Admin</a></li>
+      </ul>
+      <div>
+        <button id="darkToggle" class="toggle">🌙</button>
+        <span id="menuBtn" class="menu-icon">☰</span>
+      </div>
+    </nav>
+
+    <main class="main-content section">
+      <header class="hero" aria-hidden="true">
+        <div class="hero-inner">
+          <h1 class="header-title">Welcome to the Alumni Portal</h1>
+          <p class="header-sub">Connect with old classmates, see announcements, and keep in touch with college events.</p>
+        </div>
+      </header>
+
+      <section class="section">
+        <h2 style="text-align:center;margin-bottom:14px">Latest Announcements</h2>
+        <div id="announcements" class="cards" style="max-width:900px;margin:0 auto;"></div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="center small-muted">© 2025 Alumni Portal. All rights reserved.</div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+

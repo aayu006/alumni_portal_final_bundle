@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Alumni Portal - Admin</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="site-wrap">
+    <nav>
+      <div class="logo">🎓 Alumni Portal</div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="admin.html" class="active">Admin</a></li>
+      </ul>
+      <div>
+        <button id="darkToggle" class="toggle">🌙</button>
+        <span id="menuBtn" class="menu-icon">☰</span>
+      </div>
+    </nav>
+
+    <main class="main-content section" style="padding-top:36px; padding-bottom:36px;">
+      <div class="cards" style="max-width:1100px;margin:0 auto;gap:18px;">
+        <div class="card" style="padding:18px;">
+          <h2>Admin Login</h2>
+          <form id="adminLoginForm" style="margin-top:10px;">
+            <label for="adminEmail" class="field-label">Email</label>
+            <input id="adminEmail" type="email" placeholder="admin@portal" required style="margin-top:8px" />
+            <label for="adminPass" class="field-label">Password</label>
+            <input id="adminPass" type="password" placeholder="admin123" required style="margin-top:8px" />
+            <div style="margin-top:10px;">
+              <button type="submit" class="primary-btn">Sign in as admin</button>
+            </div>
+            <div style="margin-top:10px" class="small-muted">
+              Default: <strong>admin@portal</strong> / <strong>admin123</strong>
+            </div>
+          </form>
+        </div>
+
+        <div id="adminPanel" class="card" style="display:none; padding:18px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;">
+            <div>
+              <h2 style="margin:0;">Admin Dashboard</h2>
+              <div class="small-muted">Manage users, announcements and export activity.</div>
+            </div>
+            <div style="text-align:right;">
+              <div class="small-muted">Total users</div>
+              <div style="font-weight:700; font-size:1.2rem;" id="userCount">0</div>
+            </div>
+          </div>
+
+          <hr style="margin:14px 0" />
+
+          <div style="display:grid; grid-template-columns: 1fr 360px; gap:18px;">
+            <div>
+              <h3 style="margin-bottom:8px;">Users</h3>
+              <div id="usersList" style="border:1px solid rgba(0,0,0,0.06); border-radius:8px; overflow:auto; max-height:300px; padding:8px;"></div>
+
+              <div style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap;">
+                <button id="exportUsersBtn" class="primary-btn" style="width:auto; padding:8px 12px;">Export Users CSV</button>
+                <button id="exportLogsBtn" class="primary-btn" style="width:auto; padding:8px 12px;">Export Activity CSV</button>
+              </div>
+            </div>
+
+            <div>
+              <h3 style="margin-bottom:8px;">Announcements</h3>
+
+              <textarea id="annText" placeholder="Write an announcement..." rows="4" style="width:100%; padding:10px; border-radius:8px; border:1px solid #e6e9f2"></textarea>
+              <div style="margin-top:8px; display:flex; gap:8px;">
+                <button id="postAnn" class="primary-btn" style="padding:8px 12px;">Post Announcement</button>
+                <button id="populateDemo" class="primary-btn" style="padding:8px 12px; background:#6b7280;">Populate Demo</button>
+              </div>
+
+              <div style="margin-top:14px;">
+                <h4 style="margin-bottom:8px;">Recent activity</h4>
+                <div id="annList" style="border:1px solid rgba(0,0,0,0.06); border-radius:8px; overflow:auto; max-height:220px; padding:8px;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <footer>
+      <div class="center small-muted">© 2025 Alumni Portal. All rights reserved.</div>
+    </footer>
+  </div>
+
+  <script>
+    // populate demo button logic (keeps admin.html self-contained)
+    document.addEventListener('DOMContentLoaded', function () {
+      var pd = document.getElementById('populateDemo');
+      if (!pd) return;
+      pd.addEventListener('click', function () {
+        try {
+          var users = JSON.parse(localStorage.getItem('ap_users') || '[]');
+          if (!users.find(function(u){ return u.email === 'alice@example.com'; })) {
+            users.push({ email: 'alice@example.com', name: 'Alice', pass: btoa('Alice123!'), created: new Date().toISOString(), lastLogin: null, role: 'user' });
+            users.push({ email: 'bob@example.com', name: 'Bob', pass: btoa('Bob123!'), created: new Date().toISOString(), lastLogin: null, role: 'user' });
+            localStorage.setItem('ap_users', JSON.stringify(users));
+          }
+          alert('Demo users added: alice@example.com, bob@example.com (passwords are plain for demo).');
+        } catch (e) { console.error(e); alert('Could not populate demo'); }
+      });
+    });
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
